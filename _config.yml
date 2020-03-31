@@ -1,0 +1,145 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Hi996
+subtitle: 你以为的极限,也许只是别人的起点.
+description: 刘帅,一名拥有全栈(全干)梦想的工程师,在这里记录一些关于自己技术的成长.
+keywords: 刘帅,liushuai,Liuonion,Hi996,996,iOS,程序员
+author: Liuonion
+language: zh-CN
+timezone:
+avatar: /uploads/avatar.png
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://blog.hi996.com
+root: /
+#permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Include/Exclude Files/Folders
+include:
+  # Include any file in 'source/_data/'.
+  - "_data/*"
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+symbols_count_time:
+ #文章内是否显示
+  symbols: true
+  time: true
+ # 网页底部是否显示
+  total_symbols: true
+  total_time: true
+
+# 图片懒加载
+lazyload:
+  enable: true
+  onlypost: true
+  loadingImg: #/images/loading.png
+  #不填写使用默认加载图片, 如果需要自定义，添填入 loading 图片地址，
+  #如果是本地图片，不要忘记把图片添加到你的主题目录下。 Next 主题需将图片放到 \themes\next\source\images 目录下, 然后引用时: loadingImg: /images/图片文件名
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# hexo-tag-cloud
+tag_cloud:
+    textFont: Trebuchet MS, Helvetica
+    textColor: '#333'
+    textHeight: 25
+    outlineColor: '#E2E1D1'
+    maxSpeed: 0.5
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+- type: git
+  repo: 
+        github: git@github.com:lsgeek/lsgeek.github.io.git,master
+        coding: git@e.coding.net:lsgeek/lsgeek/lsgeek.git,master
+        gitee: git@gitee.com:lsgeek/lsgeek.git,master
+- type: baidu_url_submitter ## baidu
+- type: baidu_xz_url_submitter # 百度熊掌号
+        
+        
+#duoshuo_shortname: hi996blog
+
+baidu_analytics: blog_baidu_analytics_need_replace
+
+feed: 
+type: atom  #feed 类型 
+path: atom.xml  #rss 路径 
+limit: 20  #在 rss 中最多生成的文章数(0显示所有)
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
+# abbrlink config https://github.com/Rozbo/hexo-abbrlink
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and he
+
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+baidu_url_submit:
+  count: 10 ## 提交最新的一个链接
+  host: blog.hi996.com ## 在百度站长平台中注册的域名
+  token: blog_baidu_push_token_need_replace ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+  xz_appid: blog_baidu_push_xz_id_need_replace ## 你的熊掌号 appid
+  xz_token: blog_baidu_push_xz_token_need_replace ## 你的熊掌号 token
+  xz_count: 10 ## 从所有的提交的数据当中选取最新的10条,该数量跟你的熊掌号而定

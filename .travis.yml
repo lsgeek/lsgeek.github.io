@@ -1,0 +1,34 @@
+language: node_js
+sudo: false
+node_js:
+- '8'
+branches:
+  only:
+  - hexo
+before_install:
+- openssl aes-256-cbc -K $encrypted_9ae91ed962e2_key -iv $encrypted_9ae91ed962e2_iv -in .travis/xxx.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name 'liushuai9304'
+- git config --global user.email liushuai9304@gmail.com
+- sed -i "s/blog_baidu_push_token_need_replace/${blog_baidu_push_token}/" ./_config.yml
+- sed -i "s/blog_baidu_push_xz_id_need_replace/${blog_baidu_push_xz_id}/" ./_config.yml
+- sed -i "s/blog_baidu_push_xz_token_need_replace/${blog_baidu_push_xz_token}/" ./_config.yml
+- sed -i "s/blog_baidu_analytics_need_replace/${blog_baidu_analytics}/" ./_config.yml
+- sed -i "s/blog_valine_appid_need_replace/${blog_valine_appid}/" ./themes/next/_config.yml
+- sed -i "s/blog_valine_appkey_need_replace/${blog_valine_appkey}/" ./themes/next/_config.yml
+- sed -i "s/blog_chatra_id_need_replace/${blog_chatra_id}/" ./themes/next/_config.yml
+install:
+- npm install hexo-cli -g
+- npm install
+- npm install hexo-symbols-count-time --save
+- npm install hexo-lazyload-image --save
+- npm install hexo-generator-searchdb --save
+- npm install hexo-abbrlink --save
+- npm install hexo-generator-sitemap --save
+- npm install hexo-generator-baidu-sitemap --save
+- npm install hexo-baidu-url-submit --save
+script:
+- hexo clean && hexo g -d

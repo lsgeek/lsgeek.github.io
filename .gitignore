@@ -1,0 +1,6 @@
+/.deploy_git 
+/node_modules
+*.DS_Store
+source/_posts/.markeditor
+source/_posts/.Archive
+source/_posts/configs/sorts.json
